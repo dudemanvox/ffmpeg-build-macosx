@@ -36,4 +36,4 @@ cd $TARGET
 echo "Now we download and execute the build script"
 echo ""
 
-bash <(curl -s https://raw.githubusercontent.com/zoharbabin/ffmpeg-build-macosx/master/build-ffmpeg) --build
+bash <(curl -s https://raw.githubusercontent.com/dudemanvox/ffmpeg-build-macosx/master/build-ffmpeg) --build
