@@ -364,7 +364,6 @@ execute ./configure --arch=64 --prefix=${WORKSPACE} \
      --enable-libopencore_amrnb \
      --extra-cflags=--static \
      --disable-ffplay \
-     --disable-ffserver \
      --disable-doc \
      --enable-gpl \
      --enable-version3 \
