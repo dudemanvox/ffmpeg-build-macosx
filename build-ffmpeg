@@ -228,7 +228,7 @@ fi
 
 if build "x264"; then
  
-    download "ftp://ftp.videolan.org/pub/x264/snapshots/x264-snapshot-20191217-2245.tar.bz2" "last_x264.tar.bz2"
+    download "http://ftp.videolan.org/pub/x264/snapshots/x264-snapshot-20191217-2245.tar.bz2" "last_x264.tar.bz2"
     cd $PACKAGES/x264-snapshot-* || exit
     execute ./configure --prefix=${WORKSPACE} --disable-shared --enable-static
     execute make -j $MJOBS
@@ -337,7 +337,7 @@ if build "fdk_aac"; then
 fi
 
 if build "frei0r"; then
-       download "https://files.dyne.org/frei0r/releases/frei0r-plugins-1.6.1.tar.gz" "frei0r-plugins-1.6.1.tar.gz"
+       download "https://files.dyne.org/frei0r/releases/frei0r-plugins-1.7.0.tar.gz" "frei0r-plugins-1.7.0.tar.gz"
        cd $PACKAGES/frei0r* || exit
        perl -p -i -e "s/OpenCV\" OFF/OpenCV\" ON/" CMakeLists.txt
        execute cmake -DCMAKE_INSTALL_PREFIX:PATH=${WORKSPACE} .
@@ -349,7 +349,7 @@ if build "frei0r"; then
 fi
 
 build "ffmpeg"
-download "http://ffmpeg.org/releases/ffmpeg-3.3.4.tar.bz2" "ffmpeg-3.3.4.tar.bz2"
+download "http://ffmpeg.org/releases/ffmpeg-4.3.1.tar.bz2" "ffmpeg-4.3.1tar.bz2"
 cd $PACKAGES/ffmpeg* || exit
 CFLAGS="-I$WORKSPACE/include `$WORKSPACE/bin/freetype-config --cflags` -I$WORKSPACE/include/vorbis" LDFLAGS="-L$WORKSPACE/lib `$WORKSPACE/bin/freetype-config --libs`" 
 # CFLAGS="-I$WORKSPACE/include" LDFLAGS="-L$WORKSPACE/lib" 
