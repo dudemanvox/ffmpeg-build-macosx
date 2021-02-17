@@ -165,8 +165,8 @@ if ! command_exists "curl"; then
 fi
 
 if build "nasm"; then
-	download "http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.gz" "nasm-2.13.01.tar.gz"
-	cd $PACKAGES/nasm-2.13.01 || exit
+	download "http://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.gz" "nasm-2.15.05.tar.gz"
+	cd $PACKAGES/nasm-2.15.05 || exit
 	execute ./configure --prefix=${WORKSPACE}
 	execute make -j $MJOBS
 	execute make install
@@ -193,7 +193,7 @@ if build "opencore"; then
 fi
 
 if build "libvpx"; then
-    download "https://github.com/webmproject/libvpx/archive/v1.5.0.tar.gz" "libvpx-1.5.0.tar.gz"
+    download "https://github.com/webmproject/libvpx/archive/v1.9.0.tar.gz" "libvpx-1.9.0.tar.gz"
     cd $PACKAGES/libvpx* || exit
     sed   -e 's/cp -p/cp/' -i build/make/Makefile
     execute ./configure --prefix=${WORKSPACE} --disable-unit-tests --disable-shared
@@ -212,7 +212,7 @@ if build "lame"; then
 fi
 
 if build "xvidcore"; then
-    download "http://downloads.xvid.org/downloads/xvidcore-1.3.4.tar.gz" "xvidcore-1.3.4.tar.gz"
+    download "http://downloads.xvid.com/downloads/xvidcore-1.3.7.tar.gz" "xvidcore-1.3.7.tar.gz"
     cd $PACKAGES/xvidcore  || exit
     cd build/generic  || exit
     execute ./configure --prefix=${WORKSPACE} --disable-shared --enable-static
@@ -247,8 +247,8 @@ if build "libogg"; then
 fi
 
 if build "libvorbis"; then
-    download "http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.gz" "libvorbis-1.3.5.tar.gz"
-    cd $PACKAGES/libvorbis-1.3.5 || exit
+    download "http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.gz" "libvorbis-1.3.7.tar.gz"
+    cd $PACKAGES/libvorbis-1.3.7 || exit
     execute ./configure --prefix=${WORKSPACE} --with-ogg-libraries=${WORKSPACE}/lib --with-ogg-includes=${WORKSPACE}/include/ --enable-static --disable-shared --disable-oggtest
     execute make -j $MJOBS
     execute make install
@@ -268,8 +268,8 @@ if build "libtheora"; then
 fi
 
 if build "pkg-config"; then
-    download "http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.1.tar.gz" "pkg-config-0.29.1.tar.gz"
-    cd $PACKAGES/pkg-config-0.29.1 || exit
+    download "http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz" "pkg-config-0.29.2.tar.gz"
+    cd $PACKAGES/pkg-config-0.29.2 || exit
     execute ./configure --silent --prefix=${WORKSPACE} --with-pc-path=${WORKSPACE}/lib/pkgconfig --with-internal-glib
     execute make -j $MJOBS
     execute make install
@@ -277,7 +277,7 @@ if build "pkg-config"; then
 fi
 
 if build "freetype"; then
-	download "http://download.savannah.gnu.org/releases/freetype/freetype-2.8.tar.gz" "freetype-2.8.tar.gz"
+	download "http://download.savannah.gnu.org/releases/freetype/freetype-2.10.4.tar.gz" "freetype-2.10.4.tar.gz"
 	cd $PACKAGES/freet* || exit
 	execute ./configure --silent --prefix=${WORKSPACE} --with-pc-path=${WORKSPACE}/lib/pkgconfig --disable-shared --enable-static
 	execute make -j $MJOBS
@@ -286,7 +286,7 @@ if build "freetype"; then
 fi
 
 if build "fontconfig"; then
-	download "http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.94.tar.gz" "fontconfig-2.11.94.tar.gz"
+	download "http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.95.tar.gz" "fontconfig-2.11.95.tar.gz"
 	cd $PACKAGES/fontc* || exit
 	execute ./configure --silent --prefix=${WORKSPACE} --with-pc-path=${WORKSPACE}/lib/pkgconfig --disable-shared --enable-static
 	execute make -j $MJOBS
@@ -295,7 +295,7 @@ if build "fontconfig"; then
 fi
 
 if build "cmake"; then
-    download "https://cmake.org/files/v3.5/cmake-3.5.2.tar.gz" "cmake-3.5.2.tar.gz"
+    download "https://cmake.org/files/v3.19/cmake-3.19.0.tar.gz" "cmake-3.19.0.tar.gz"
     cd $PACKAGES/cmake*  || exit
     rm Modules/FindJava.cmake
     perl -p -i -e "s/get_filename_component.JNIPATH/#get_filename_component(JNIPATH/g" Tests/CMakeLists.txt 
@@ -328,7 +328,7 @@ if build "x265"; then
 fi
 
 if build "fdk_aac"; then
-    download "http://downloads.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-0.1.5.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fopencore-amr%2Ffiles%2Ffdk-aac%2F&ts=1457561564&use_mirror=kent" "fdk-aac-0.1.5.tar.gz"
+    download "https://cfhcable.dl.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-2.0.1.tar.gz" "fdk-aac-2.0.1.tar.gz"
     cd $PACKAGES/fdk-aac* || exit
     execute ./configure --prefix=${WORKSPACE} --disable-shared --enable-static
     execute make -j $MJOBS
@@ -372,7 +372,6 @@ execute ./configure --arch=64 --prefix=${WORKSPACE} \
      --enable-libvpx \
      --enable-libmp3lame \
      --enable-libtheora \
-     --enable-libvorbis \
      --enable-libx264 \
      --enable-libx265 \
      --enable-runtime-cpudetect \
